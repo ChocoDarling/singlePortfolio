@@ -1,27 +1,50 @@
-document.body.style.backgroundColor = 'rgb(18, 63, 105)';
-document.body.style.backgroundSize = 'cover';
+{
+  document.body.style.backgroundImage = 'url(./images/body_background.jpg)';
+  document.body.style.backgroundSize = 'cover';
+  document.body.style.margin = '0px';
+  document.body.style.color = 'white';
+  
+  const fontStyle = document.createElement('style');
+  document.head.append(fontStyle);
+  fontStyle.innerHTML = `@import url('https://fonts.googleapis.com` +
+    `/css2?family=Dancing+Script:wght@700&display=swap')`;
+}
+
 makeElement([
   ['id', 'fullScreen'],
   ['style', 'margin', 'auto'],
   ['style', 'width', '800px'],
-  ['style', 'border', '1px solid black'],
 ]);
 
-//이미지 고른 후 수정
 makeElement([
   ['id', 'intro'],
   ['style', 'width', '800px'],
   ['style', 'height', '600px'],
-  ['style', 'backgroundImage', 'url("./images/intro_background.jpg")'],
-  ['style', 'border', '1px solid black'],
 ], 'fullScreen');
+
+makeElement([
+  ['id', 'introMoon'],
+  ['src', './images/intro_moon.png'],
+  ['alt', 'intro_moon'],
+  ['style', 'zIndex', 'auto'],
+  ['style', 'width', `800px`],
+], 'intro', 'img');
+
+makeElement([
+  ['id', 'title'],
+  ['style', 'margin', 'auto'],
+  ['style', 'textAlign', 'center'],
+  ['style', 'fontSize', '5em'],
+  ['style', 'fontFamily', `'Dancing Script', cursive`],
+  ['innerHTML', `KyungHoon's Coding Life`],
+], 'intro', 'h1');
+
 
 makeElement([
   ['id', 'profile'],
   ['style', 'margin', 'auto'],
   ['style', 'padding', '1em 4em'],
-  ['style', 'height', '300px'],
-  ['style', 'border', '1px solid black'],
+  ['style', 'height', '500px'],
 ], 'fullScreen');
 
 makeElement([
@@ -29,13 +52,11 @@ makeElement([
   ['src', '../images/1.jpg'],
   ['style', 'float', 'left'],
   ['style', 'marginRight', '50px'],
-  ['style', 'border', '1px solid black'],
 ], 'profile', 'img');
 
 makeElement([
   ['id', 'profileText'],
   ['style', 'float', 'left'],
-  ['style', 'border', '1px solid black'],
 ], 'profile');
 
 makeElement([
@@ -55,7 +76,7 @@ makeElement([
 makeElement([
   ['id', 'profileCol'],
   ['span', '1'],
-  ['style', 'width', '150'],
+  ['style', 'width', '150px'],
 ], 'profileColgroup', 'col');
 
 makeElement([
@@ -113,16 +134,51 @@ makeElement([
 
 makeElement([
   ['id', 'portfolioScreen'],
-  ['style', 'border', '1px solid black'],
   ['style', 'height', `${innerHeight}px`],
+  ['style', 'border', '1px solid white'],
 ], 'fullScreen');
 
+const portfolioWidth = Number.parseInt(document.getElementById('fullScreen').style.width) / 5 * 2;
+for (let i = 0; i < 4; ++i) {
+  let isMargin;
 
+  if (i % 2) isMargin = 'marginLeft'
+  else isMargin = 'marginRight'
+
+  makeElement([
+    ['class', 'portfolio'],
+    ['style', 'margin', '10px'],
+    ['style', isMargin, `${portfolioWidth / 2 - 92}px`],
+    ['style', 'float', 'left'],
+    ['style', 'height', `${portfolioWidth - 2}px`],
+    ['style', 'width', `${portfolioWidth - 2}px`],
+    ['style', 'borderRadius', `${portfolioWidth / 2}px`],
+    ['style', 'border', '1px solid white'],
+  ], 'portfolioScreen');
+}
+
+for (let i = 0; i < 2; ++i) {
+  let isMargin;
+
+  if (i % 2) isMargin = 'marginLeft'
+  else isMargin = 'marginRight'
+
+  makeElement([
+    ['class', 'portfolio'],
+    ['style', 'margin', '10px'],
+    ['style', isMargin, `${portfolioWidth / 2 - 92}px`],
+    ['style', 'float', 'left'],
+    ['style', 'height', `${(portfolioWidth - 2) / 4}px`],
+    ['style', 'width', `${portfolioWidth - 2}px`],
+    ['style', 'borderRadius', `${portfolioWidth / 2}px`],
+    ['style', 'border', '1px solid white'],
+  ], 'portfolioScreen');
+}
 
 makeElement([
   ['id', 'addressAndPhonenumber'],
-  ['style', 'height', `${innerHeight}px`],
-  ['style', 'border', '1px solid black'],
+  ['style', 'height', `${innerHeight - 200}px`],
+  ['style', 'paddingTop', '200px'],
 ], 'fullScreen');
 
 makeElement([
@@ -130,7 +186,6 @@ makeElement([
   ['innerHTML', 'rudekrudek@naver.com'],
   ['style', 'textAlign', 'center'],
   ['style', 'fontSize', '3em'],
-  ['style', 'border', '1px solid black'],
 ], 'addressAndPhonenumber', 'h1');
 
 makeElement([
@@ -138,7 +193,6 @@ makeElement([
   ['innerHTML', '010-3283-6388'],
   ['style', 'textAlign', 'center'],
   ['style', 'fontSize', '3em'],
-  ['style', 'border', '1px solid black'],
 ], 'addressAndPhonenumber', 'h1');
 
 
