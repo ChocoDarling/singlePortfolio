@@ -118,6 +118,7 @@ makeElement([
 
 makeElement([
   ['id', 'addressAndPhonenumber'],
+  ['style', 'height', `${innerHeight}px`],
   ['style', 'border', '1px solid black'],
 ], 'fullScreen');
 
