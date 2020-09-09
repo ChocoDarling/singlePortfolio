@@ -49,7 +49,7 @@ makeElement([
 
 makeElement([
   ['id', 'profilePhoto'],
-  ['src', '../images/1.jpg'],
+  ['src', './images/1.jpg'],
   ['style', 'float', 'left'],
   ['style', 'marginRight', '50px'],
 ], 'profile', 'img');
@@ -131,10 +131,13 @@ makeElement([
   ['innerHTML', '2017년 02월'],
 ], 'graduation', 'td');
 
-
+function getPortfolioHeight() {
+  if(innerHeight < 800)return '800px';
+  return `${innerHeight}px`;
+}
 makeElement([
   ['id', 'portfolioScreen'],
-  ['style', 'height', `${innerHeight}px`],
+  ['style', 'height', getPortfolioHeight()],
   ['style', 'border', '1px solid white'],
 ], 'fullScreen');
 
