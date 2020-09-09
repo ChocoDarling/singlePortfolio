@@ -1,3 +1,5 @@
+document.body.style.backgroundColor = 'rgb(18, 63, 105)';
+document.body.style.backgroundSize = 'cover';
 makeElement([
   ['id', 'fullScreen'],
   ['style', 'margin', 'auto'],
@@ -10,6 +12,7 @@ makeElement([
   ['id', 'intro'],
   ['style', 'width', '800px'],
   ['style', 'height', '600px'],
+  ['style', 'backgroundImage', 'url("./images/intro_background.jpg")'],
   ['style', 'border', '1px solid black'],
 ], 'fullScreen');
 
