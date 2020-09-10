@@ -9,14 +9,12 @@ makeElement([
   ['id', 'fullScreeen'],
   ['style', 'margin', 'auto'],
   ['style', 'width', '800px'],
-  ['style', 'border', '1px solid black'],
 ]);
 
 makeElement([
   ['id', 'topLanguage'],
   ['style', 'width', '800px'],
   ['style', 'height', '50px'],
-  ['style', 'border', '1px solid black'],
 ], 'fullScreeen');
 
 makeElement([
@@ -148,4 +146,181 @@ makeElement([
   ['style', 'border', '1px solid rgb(3, 179, 81)'],
 ], 'submitAria', 'input');
 
-console.dir(document.getElementById('passwordInput'));
+makeElement([
+  ['id', 'hr'],
+  ['style', 'color', 'lightgray'],
+], 'midLogin', 'hr');
+
+makeElement([
+  ['id', 'infomation'],
+  ['style', 'margin', 'auto'],
+  ['style', 'marginBottom', '30px'],
+  ['style', 'textAlign', 'center'],
+], 'midLogin', 'div');
+
+makeElement([
+  ['id', 'findIdBtn'],
+  ['type', 'button'],
+  ['value', '아이디 찾기'],
+  ['onclick', () => { infomationsIsDisplay('findId'); }],
+  ['style', 'fontSize', '20px'],
+  ['style', 'background', 'none'],
+  ['style', 'border', '1px solid lightgray'],
+  ['style', 'borderRadius', '10px'],
+  ['style', 'outline', 'none'],
+  ['style', 'color', 'gray'],
+], 'infomation', 'input');
+
+makeElement([
+  ['innerHTML', ' | '],
+  ['style', 'fontSize', '20px'],
+  ['style', 'color', 'lightgray'],
+], 'infomation', 'span');
+
+makeElement([
+  ['id', 'findPasswordBtn'],
+  ['type', 'button'],
+  ['value', '비밀번호 찾기'],
+  ['onclick', () => { infomationsIsDisplay('findPassword'); }],
+  ['style', 'fontSize', '20px'],
+  ['style', 'background', 'none'],
+  ['style', 'border', '1px solid lightgray'],
+  ['style', 'borderRadius', '10px'],
+  ['style', 'outline', 'none'],
+  ['style', 'color', 'gray'],
+], 'infomation', 'input');
+
+makeElement([
+  ['innerHTML', ' | '],
+  ['style', 'fontSize', '20px'],
+  ['style', 'color', 'lightgray'],
+], 'infomation', 'span');
+
+makeElement([
+  ['id', 'signUPBtn'],
+  ['type', 'button'],
+  ['value', '회원가입'],
+  ['onclick', () => { infomationsIsDisplay('signUp'); }],
+  ['style', 'fontSize', '20px'],
+  ['style', 'background', 'none'],
+  ['style', 'border', '1px solid lightgray'],
+  ['style', 'borderRadius', '10px'],
+  ['style', 'outline', 'none'],
+  ['style', 'color', 'gray'],
+], 'infomation', 'input');
+
+makeElement([
+  ['id', 'findId'],
+  ['className', 'infomations'],
+  ['style', 'display', 'none'],
+  ['style', 'margin', 'auto'],
+  ['style', 'textAlign', 'center'],
+  ['style', 'border', '1px solid lightgray'],
+], 'midLogin', 'div');
+
+makeElement([
+  ['id', 'findedId'],
+  ['innerHTML', 'ID'],
+  ['style', 'margin', '10px auto'],
+  ['style', 'color', 'lightgray'],
+  ['style', 'fontSize', '40px'],
+  ['style', 'height', '50px'],
+  ['style', 'textAlign', 'center'],
+], 'findId', 'div');
+
+makeElement([
+  ['id', 'findIdNameAria'],
+  ['style', 'margin', '10px auto'],
+  ['style', 'width', '300px'],
+  ['style', 'border', '1px solid lightgray'],
+], 'findId');
+
+makeElement([
+  ['id', 'findIdNameInput'],
+  ['type', 'text'],
+  ['placeholder', '이름'],
+  ['onfocus', () => { inputIsFocus('findIdNameAria'); }],
+  ['onblur', () => { inputIsFocus('findIdNameAria', false); }],
+  ['style', 'margin', '10px 5px'],
+  ['style', 'width', '280px'],
+  ['style', 'height', '30px'],
+  ['style', 'border', 'none'],
+  ['style', 'outline', 'none'],
+], 'findIdNameAria', 'input');
+
+makeElement([
+  ['id', 'findIdNameInputError'],
+  ['style', 'fontSize', '10px'],
+  ['style', 'color', 'red'],
+  ['style', 'display', 'none'],
+], 'findId', 'p');
+
+makeElement([
+  ['id', 'findIdPhoneAria'],
+  ['style', 'margin', '10px auto'],
+  ['style', 'width', '300px'],
+  ['style', 'border', '1px solid lightgray'],
+], 'findId');
+
+makeElement([
+  ['id', 'findIdPhoneInput'],
+  ['type', 'text'],
+  ['placeholder', '전화번호'],
+  ['onfocus', () => { inputIsFocus('findIdPhoneAria'); }],
+  ['onblur', () => { inputIsFocus('findIdPhoneAria', false); }],
+  ['style', 'margin', '10px 5px'],
+  ['style', 'width', '280px'],
+  ['style', 'height', '30px'],
+  ['style', 'border', 'none'],
+  ['style', 'outline', 'none'],
+], 'findIdPhoneAria', 'input');
+
+makeElement([
+  ['id', 'findIdPhoneInputError'],
+  ['style', 'fontSize', '10px'],
+  ['style', 'color', 'red'],
+  ['style', 'display', 'none'],
+], 'findId', 'p');
+
+makeElement([
+  ['id', 'findIdBtn'],
+  ['type', 'button'],
+  ['value', '아이디 찾기'],
+  ['onclick', () => { findID(); }],
+  ['style', 'margin', '10px auto'],
+  ['style', 'fontSize', '20px'],
+  ['style', 'background', 'none'],
+  ['style', 'border', '1px solid lightgray'],
+  ['style', 'borderRadius', '10px'],
+  ['style', 'outline', 'none'],
+  ['style', 'color', 'gray'],
+], 'findId', 'input');
+
+
+
+makeElement([
+  ['id', 'findPassword'],
+  ['className', 'infomations'],
+  ['style', 'display', 'block'],
+  ['style', 'margin', 'auto'],
+  ['style', 'textAlign', 'center'],
+  ['style', 'border', '1px solid lightgray'],
+], 'midLogin', 'div');
+
+makeElement([
+  ['id', 'findUserInfo'],
+], 'findPassword', 'div');
+  
+makeElement([
+  ['id', 'signUp'],
+  ['className', 'infomations'],
+  ['style', 'display', 'block'],
+  ['style', 'margin', 'auto'],
+  ['style', 'textAlign', 'center'],
+  ['style', 'border', '1px solid lightgray'],
+], 'midLogin', 'div');
+
+makeElement([
+  ['id', 'findUserInfo1'],
+], 'signUp', 'div');
+    
