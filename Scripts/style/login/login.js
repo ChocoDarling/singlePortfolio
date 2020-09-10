@@ -34,13 +34,19 @@ makeElement([
 
 makeElement([
   ['id', 'logo'],
-  ['innerHTML', 'NAVER'],
   ['style', 'fontSize', '60px'],
   ['style', 'textAlign', 'center'],
   ['style', 'fontFamily', `'Lobster', cursive`],
   ['style', 'fontWeight', '900'],
-  ['style', 'color', 'rgb(0, 200, 80)'],
 ], 'midLogin', 'h1');
+
+makeElement([
+  ['id', 'logoLink'],
+  ['innerHTML', 'NAVER'],
+  ['href', '../index.html'],
+  ['style', 'textDecoration', 'none'],
+  ['style', 'color', 'rgb(0, 200, 80)'],
+], 'logo', 'a');
 
 makeElement([
   ['id', 'midLoginAria'],
