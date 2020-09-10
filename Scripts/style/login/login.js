@@ -26,7 +26,6 @@ makeElement([
   ['style', 'border', '1px solid black'],
 ], 'topLanguage');
 
-
 makeElement([
   ['id', 'midLogin'],
   ['style', 'margin', 'auto'],
@@ -92,6 +91,7 @@ makeElement([
 
 makeElement([
   ['id', 'idInputError'],
+  ['className', 'inputs'],
   ['innerHTML', '아이디를 입력해주세요'],
   ['style', 'fontSize', '10px'],
   ['style', 'color', 'red'],
@@ -120,6 +120,7 @@ makeElement([
 
 makeElement([
   ['id', 'passwordInputError'],
+  ['className', 'inputs'],
   ['innerHTML', '비밀번호를 입력해주세요'],
   ['style', 'fontSize', '10px'],
   ['style', 'color', 'red'],
@@ -156,7 +157,7 @@ makeElement([
   ['style', 'margin', 'auto'],
   ['style', 'marginBottom', '30px'],
   ['style', 'textAlign', 'center'],
-], 'midLogin', 'div');
+], 'midLogin');
 
 makeElement([
   ['id', 'findIdBtn'],
@@ -208,119 +209,3 @@ makeElement([
   ['style', 'outline', 'none'],
   ['style', 'color', 'gray'],
 ], 'infomation', 'input');
-
-makeElement([
-  ['id', 'findId'],
-  ['className', 'infomations'],
-  ['style', 'display', 'none'],
-  ['style', 'margin', 'auto'],
-  ['style', 'textAlign', 'center'],
-  ['style', 'border', '1px solid lightgray'],
-], 'midLogin', 'div');
-
-makeElement([
-  ['id', 'findedId'],
-  ['innerHTML', 'ID'],
-  ['style', 'margin', '10px auto'],
-  ['style', 'color', 'lightgray'],
-  ['style', 'fontSize', '40px'],
-  ['style', 'height', '50px'],
-  ['style', 'textAlign', 'center'],
-], 'findId', 'div');
-
-makeElement([
-  ['id', 'findIdNameAria'],
-  ['style', 'margin', '10px auto'],
-  ['style', 'width', '300px'],
-  ['style', 'border', '1px solid lightgray'],
-], 'findId');
-
-makeElement([
-  ['id', 'findIdNameInput'],
-  ['type', 'text'],
-  ['placeholder', '이름'],
-  ['onfocus', () => { inputIsFocus('findIdNameAria'); }],
-  ['onblur', () => { inputIsFocus('findIdNameAria', false); }],
-  ['style', 'margin', '10px 5px'],
-  ['style', 'width', '280px'],
-  ['style', 'height', '30px'],
-  ['style', 'border', 'none'],
-  ['style', 'outline', 'none'],
-], 'findIdNameAria', 'input');
-
-makeElement([
-  ['id', 'findIdNameInputError'],
-  ['style', 'fontSize', '10px'],
-  ['style', 'color', 'red'],
-  ['style', 'display', 'none'],
-], 'findId', 'p');
-
-makeElement([
-  ['id', 'findIdPhoneAria'],
-  ['style', 'margin', '10px auto'],
-  ['style', 'width', '300px'],
-  ['style', 'border', '1px solid lightgray'],
-], 'findId');
-
-makeElement([
-  ['id', 'findIdPhoneInput'],
-  ['type', 'text'],
-  ['placeholder', '전화번호'],
-  ['onfocus', () => { inputIsFocus('findIdPhoneAria'); }],
-  ['onblur', () => { inputIsFocus('findIdPhoneAria', false); }],
-  ['style', 'margin', '10px 5px'],
-  ['style', 'width', '280px'],
-  ['style', 'height', '30px'],
-  ['style', 'border', 'none'],
-  ['style', 'outline', 'none'],
-], 'findIdPhoneAria', 'input');
-
-makeElement([
-  ['id', 'findIdPhoneInputError'],
-  ['style', 'fontSize', '10px'],
-  ['style', 'color', 'red'],
-  ['style', 'display', 'none'],
-], 'findId', 'p');
-
-makeElement([
-  ['id', 'findIdBtn'],
-  ['type', 'button'],
-  ['value', '아이디 찾기'],
-  ['onclick', () => { findID(); }],
-  ['style', 'margin', '10px auto'],
-  ['style', 'fontSize', '20px'],
-  ['style', 'background', 'none'],
-  ['style', 'border', '1px solid lightgray'],
-  ['style', 'borderRadius', '10px'],
-  ['style', 'outline', 'none'],
-  ['style', 'color', 'gray'],
-], 'findId', 'input');
-
-
-
-makeElement([
-  ['id', 'findPassword'],
-  ['className', 'infomations'],
-  ['style', 'display', 'block'],
-  ['style', 'margin', 'auto'],
-  ['style', 'textAlign', 'center'],
-  ['style', 'border', '1px solid lightgray'],
-], 'midLogin', 'div');
-
-makeElement([
-  ['id', 'findUserInfo'],
-], 'findPassword', 'div');
-  
-makeElement([
-  ['id', 'signUp'],
-  ['className', 'infomations'],
-  ['style', 'display', 'block'],
-  ['style', 'margin', 'auto'],
-  ['style', 'textAlign', 'center'],
-  ['style', 'border', '1px solid lightgray'],
-], 'midLogin', 'div');
-
-makeElement([
-  ['id', 'findUserInfo1'],
-], 'signUp', 'div');
-    
