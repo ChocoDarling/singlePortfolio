@@ -15,7 +15,7 @@ makeElement([
 makeElement([
   ['id', 'topLanguage'],
   ['style', 'width', '800px'],
-  ['style', 'height', '100px'],
+  ['style', 'height', '50px'],
   ['style', 'border', '1px solid black'],
 ], 'fullScreeen');
 
@@ -61,7 +61,7 @@ makeElement([
   ['id', 'loginForm'],
   ['method', 'get'],
   ['action', 'http://localhost/login'],
-  ['onsubmit', loginError],
+  ['onsubmit', () => { return loginError(); }],
   ['style', 'margin', 'auto'],
   ['style', 'width', '500px'],
 ], 'loginAria', 'form');
@@ -70,7 +70,6 @@ makeElement([
   ['id', 'idAria'],
   ['style', 'margin', '10px 0px'],
   ['style', 'width', '498px'],
-  ['style', 'height', '50px'],
   ['style', 'border', '1px solid lightgray'],
 ], 'loginForm');
 
@@ -94,10 +93,17 @@ makeElement([
 ], 'idAria', 'input');
 
 makeElement([
+  ['id', 'idInputError'],
+  ['innerHTML', '아이디를 입력해주세요'],
+  ['style', 'fontSize', '10px'],
+  ['style', 'color', 'red'],
+  ['style', 'display', 'none'],
+], 'loginForm', 'p');
+
+makeElement([
   ['id', 'passwordAria'],
   ['style', 'margin', '10px 0px'],
   ['style', 'width', '498px'],
-  ['style', 'height', '50px'],
   ['style', 'border', '1px solid lightgray'],
 ], 'loginForm');
 
@@ -115,16 +121,20 @@ makeElement([
 ], 'passwordAria', 'input');
 
 makeElement([
+  ['id', 'passwordInputError'],
+  ['innerHTML', '비밀번호를 입력해주세요'],
+  ['style', 'fontSize', '10px'],
+  ['style', 'color', 'red'],
+  ['style', 'display', 'none'],
+], 'loginForm', 'p');
+
+makeElement([
   ['id', 'submitAria'],
   ['style', 'margin', '10px 0px'],
   ['style', 'width', '500px'],
   ['style', 'height', '50px'],
 ], 'loginForm');
 
-function inputIsClick () {
-  console.log('이걸 어쩌냐...');
-}
-  
 makeElement([
   ['id', 'submitInput'],
   ['type', 'submit'],
@@ -136,7 +146,6 @@ makeElement([
   ['style', 'outline', 'none'],
   ['style', 'backgroundColor', 'rgb(0, 200, 80)'],
   ['style', 'border', '1px solid rgb(3, 179, 81)'],
-  ['onclick', () => { inputIsClick(); }],
 ], 'submitAria', 'input');
 
 console.dir(document.getElementById('passwordInput'));
