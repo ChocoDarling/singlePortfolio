@@ -2,7 +2,7 @@
 function makeElement(attributesArray = [], parentId = '', tag = 'div', isAppend = true) {
   let parentElement = document.body;
   if (parentId) parentElement = document.getElementById(parentId);
-  let tempElement = document.createElement(tag);
+  const tempElement = document.createElement(tag);
   if (isAppend) parentElement.append(tempElement);
   else parentElement.prepend(tempElement);
   attributesArray.forEach(attributes => {
