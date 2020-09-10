@@ -149,7 +149,7 @@ for (let i = 0; i < 4; ++i) {
   else isMargin = 'marginRight'
 
   makeElement([
-    ['class', 'portfolio'],
+    ['className', 'portfolio'],
     ['style', 'margin', '10px'],
     ['style', isMargin, `${portfolioWidth / 2 - 92}px`],
     ['style', 'float', 'left'],
@@ -157,8 +157,12 @@ for (let i = 0; i < 4; ++i) {
     ['style', 'width', `${portfolioWidth - 2}px`],
     ['style', 'borderRadius', `${portfolioWidth / 2}px`],
     ['style', 'border', '1px solid white'],
-  ], 'portfolioScreen');
+  ], 'portfolioScreen', 'a');
 }
+
+document.getElementsByClassName('portfolio')[0].href = './html/login.html';
+document.getElementsByClassName('portfolio')[0].style.backgroundImage = 'url(./images/portfolio_login.jpg)';
+document.getElementsByClassName('portfolio')[0].style.backgroundSize = 'cover';
 
 for (let i = 0; i < 2; ++i) {
   let isMargin;
