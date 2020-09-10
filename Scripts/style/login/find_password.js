@@ -11,4 +11,3 @@ makeElement([
 makeElement([
   ['id', 'findPasswordUserInfo'],
 ], 'findPassword');
-  

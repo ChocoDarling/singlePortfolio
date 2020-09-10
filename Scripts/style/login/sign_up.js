@@ -2,7 +2,7 @@
 makeElement([
   ['id', 'signUp'],
   ['className', 'infomations'],
-  ['style', 'display', 'block'],
+  ['style', 'display', 'none'],
   ['style', 'margin', 'auto'],
   ['style', 'textAlign', 'center'],
   ['style', 'border', '1px solid lightgray'],

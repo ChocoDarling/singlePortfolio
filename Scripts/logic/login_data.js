@@ -19,5 +19,5 @@ users.push(new UserInfomation(
     '경훈', 
     '1234', 
     'sdrbsdru@dsafsdaf.sdfaasdf', 
-    '12385439543'
+    '123-8543-9543'
 ));

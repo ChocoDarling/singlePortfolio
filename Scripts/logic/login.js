@@ -3,11 +3,22 @@ function loginError() {
   const idInputError = document.getElementById('idInputError');
   const passwordInputError = document.getElementById('passwordInputError');
 
-  idInputError.style.display = 'none';
-  passwordInputError.style.display = 'none';
-  if (loginInput[0].value === '') idInputError.style.display = 'block';
-  else if (loginInput[1].value === '') passwordInputError.style.display = 'block';
-  else return true;
+  if (errorCheck('loginForm')) return false;
+  
+  const userInfo = checkUserInfo(loginInput[0].value, 'getId');
+  if (userInfo) {
+    if (userInfo.getPassword() == loginInput[1].value) {
+      alert(`${userInfo.getName()}님 오신 것을 환영합니다.`);
+    } else {
+      errorMsgPrint('loginForm', 'passwordError', '비밀번호를 확인해주세요.');
+    }
+  }
+
+  // idInputError.style.display = 'none';
+  // passwordInputError.style.display = 'none';
+  // if (loginInput[0].value === '') idInputError.style.display = 'block';
+  // else if (loginInput[1].value === '') passwordInputError.style.display = 'block';
+  // else return true;
 
   return false;
 }
@@ -16,8 +27,8 @@ function findID() {
   const idInput = document.getElementById('findedId');
   const nameInput = document.getElementById('findIdNameInput').value;
   const nameInputError = document.getElementById('findIdNameInputError');
-  const phoneInput = document.getElementById('findIdPhoneInput').value;
   const phoneInputError = document.getElementById('findIdPhoneInputError');
+  let phoneInput = document.getElementById('findIdPhoneInput').value;
   
   nameInputError.style.display = 'none';
   phoneInputError.style.display = 'none';
@@ -28,6 +39,10 @@ function findID() {
 
   const findUser = users.find(n => nameInput === n.getName());
   
+  if (phoneInput.length === 11) {
+    phoneInput = `${phoneInput.substr(0, 3)}-${phoneInput.substr(3, 4)}-${phoneInput.substr(7, 4)}`;
+  } 
+
   if (!findUser) {
     nameInputError.style.display = 'block';
     nameInputError.innerHTML = 'ID가 존재하지 않습니다.'
@@ -48,9 +63,12 @@ function infomationsIsDisplay(nowElement) {
   const allInfo = document.getElementsByClassName('infomations');
   const findElement = document.getElementById(nowElement);
   let tempBool = false;
+  resetInput(nowElement);
   
   if (findElement.style.display === 'none') tempBool = true;
-  for (let i = 0; i < allInfo.length; ++i) allInfo[i].style.display = 'none';
+  for (let i = 0; i < allInfo.length; ++i) {
+    allInfo[i].style.display = 'none';
+  } 
   if (tempBool) findElement.style.display = 'block';
 }
 
@@ -58,17 +76,67 @@ function signUp() {
   const userId = document.getElementById('signUpIdInput').value;
   const name = document.getElementById('signUpNameInput').value;
   const password = document.getElementById('signUpPasswordInput').value;
-  const passwordcheck = document
-    .getElementById('signUpPasswordCheckInput').value;
   const eMail = document.getElementById('signUpEMailInput').value;
-  const phone = document.getElementById('signUpPhoneInput').value;
+  let phone = document.getElementById('signUpPhoneInput').value;
   
   if (errorCheck('signUp')) return;
-  
 
+  if (checkUserInfo(
+    userId, 
+    'getId', 
+    'signUp', 
+    'idError', 
+    '아이디가 존재합니다.'
+  )) return;
 
-  return;
-  allInfo.pusu(new UserInfomation(userId, name, password, eMail, phone));
+  if (checkUserInfo(
+    name, 
+    'getName', 
+    'signUp', 
+    'nameError', 
+    '이름이 존재합니다.'
+  )) return;
+
+  if (checkUserInfo(
+    phone, 
+    'getPhone', 
+    'signUp', 
+    'phoneError', 
+    '전화번호가 존재합니다.'
+  )) return;
+
+  if (checkUserInfo(
+    eMail, 
+    'getEMail', 
+    'signUp', 
+    'eMailError', 
+    '이메일이 존재합니다.'
+  )) return;
+
+  if (!checkPassword(
+    'signUp', 'signUpPasswordInput', 'signUpPasswordCheckInput')
+  ) return;
+
+  if (phone.length === 11) {
+    phone = `${phone.substr(0, 3)}-${phone.substr(3, 4)}-${phone.substr(7, 4)}`;
+  } 
+
+  let checkText = phone.match(/\d{3}-\d{4}-\d{4}/);
+  if (!checkText || phone.length !== 13) {
+    errorMsgPrint('signUp', 'phoneError', '전화번호를 확인해주세요.');
+
+    return;
+  }
+
+  checkText = eMail.match(/[@.]/g);
+  if (!checkText || checkText.length !== 2 || checkText[0] !== '@' || checkText[1] !== '.') {
+    errorMsgPrint('signUp', 'eMailError', '이메일을 확인해주세요.');
+
+    return;
+  }
+
+  users.push(new UserInfomation(userId, name, password, eMail, phone));
+  resetInput('signUp');
 }
 
 function errorCheck(elementID) {
@@ -77,7 +145,7 @@ function errorCheck(elementID) {
   const errorMsgs = document.getElementById(elementID)
     .getElementsByClassName('errors');
   let errorMsg;
-
+  
   for (let i = 0; i < errors.length; ++i) {
     errorMsgs[i].style.display = 'none';
     
@@ -87,56 +155,92 @@ function errorCheck(elementID) {
   }
 
   switch (errorMsg) {
+    case '아이디':
+      errorMsgPrint(elementID, 'idError', '아이디을 입력해주세요.');
+
+      return true;
+  
+    case '비밀번호':
+      errorMsgPrint(elementID, 'passwordError', '비밀번호를 입력해주세요.');
+
+      return true;
+  
     case 'ID':
-      document.getElementById(elementID).getElementsByClassName('idError')[0]
-        .style.display = 'block';
-      document.getElementById(elementID).getElementsByClassName('idError')[0]
-        .innerHTML = '이름을 입력해주세요.'
+      errorMsgPrint(elementID, 'idError', '아이디을 입력해주세요.');
 
       return true;
 
     case 'Password':
-      document.getElementById(elementID).getElementsByClassName('passwordError')[0]
-        .style.display = 'block';
-      document.getElementById(elementID).getElementsByClassName('passwordError')[0]
-        .innerHTML = '비밀번호를 입력해주세요.'
+      errorMsgPrint(elementID, 'passwordError', '비밀번호를 입력해주세요.');
 
       return true;
 
     case 'Password Check':
-      document.getElementById(elementID).getElementsByClassName('passwordCheckError')[0]
-        .style.display = 'block';
-      document.getElementById(elementID).getElementsByClassName('passwordCheckError')[0]
-        .innerHTML = '비밀번호를 확인해주세요.'
+      errorMsgPrint(elementID, 'passwordCheckError', '비밀번호를 확인해주세요.');
 
       return true;
 
     case '이름':
-      document.getElementById(elementID).getElementsByClassName('nameError')[0]
-        .style.display = 'block';
-      document.getElementById(elementID).getElementsByClassName('nameError')[0]
-        .innerHTML = '이름을 입력해주세요.'
+      errorMsgPrint(elementID, 'nameError', '이름을 입력해주세요.');
 
       return true;
 
     case '전화번호':
-      document.getElementById(elementID).getElementsByClassName('phoneError')[0]
-        .style.display = 'block';
-      document.getElementById(elementID).getElementsByClassName('phoneError')[0]
-        .innerHTML = '전화번호를 입력해주세요.'
+      errorMsgPrint(elementID, 'phoneError', '전화번호를 입력해주세요.');
 
       return true;
 
     case 'E-mail':
-      document.getElementById(elementID).getElementsByClassName('eMailError')[0]
-        .style.display = 'block';
-      document.getElementById(elementID).getElementsByClassName('eMailError')[0]
-        .innerHTML = '이메일을 입력해주세요.'
+      errorMsgPrint(elementID, 'eMailError', '이메일을 입력해주세요.');
 
       return true;
 
     default:
 
       return false;
+  }
+}
+
+function checkPassword(elementID, pw, pwc) {
+  if (document.getElementById(pw).value === 
+    document.getElementById(pwc).value) return true;
+  
+  const errorMsg = document.getElementById(elementID)
+    .getElementsByClassName('passwordCheckError')[0];
+  errorMsg.style.display = 'block';
+  errorMsg.innerHTML = '비밀번호를 확인해주세요.'
+  return false;
+}
+
+function errorMsgPrint(elementID, className, innerHTML) {
+  document.getElementById(elementID).getElementsByClassName(className)[0]
+    .style.display = 'block';
+  document.getElementById(elementID).getElementsByClassName(className)[0]
+    .innerHTML = innerHTML;
+
+}
+
+function checkUserInfo(
+  input, 
+  isGet, 
+  elementID = undefined, 
+  className = undefined, 
+  innerHTML = undefined
+) {
+  const findUser = users.find(n => input === n[isGet]());
+  if (findUser) {
+    if (elementID) errorMsgPrint(elementID, className, innerHTML);
+    
+    return findUser;
+  }
+
+  return;
+}
+
+function resetInput(elementID) {
+  const elements = document.getElementById(elementID).getElementsByClassName('inputs');
+  
+  for (let i = 0; i < elements.length; ++i) {
+    elements[i].value = '';
   }
 }

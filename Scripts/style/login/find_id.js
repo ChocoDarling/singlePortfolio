@@ -1,4 +1,3 @@
-
 makeElement([
   ['id', 'findId'],
   ['className', 'infomations'],

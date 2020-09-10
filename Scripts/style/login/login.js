@@ -78,6 +78,7 @@ function inputIsFocus (ariaId, isFocus = true) {
 
 makeElement([
   ['id', 'idInput'],
+  ['className', 'inputs'],
   ['type', 'text'],
   ['placeholder', '아이디'],
   ['onfocus', () => { inputIsFocus('idAria'); }],
@@ -91,8 +92,7 @@ makeElement([
 
 makeElement([
   ['id', 'idInputError'],
-  ['className', 'inputs'],
-  ['innerHTML', '아이디를 입력해주세요'],
+  ['className', 'idError errors'],
   ['style', 'fontSize', '10px'],
   ['style', 'color', 'red'],
   ['style', 'display', 'none'],
@@ -107,6 +107,7 @@ makeElement([
 
 makeElement([
   ['id', 'passwordInput'],
+  ['className', 'inputs'],
   ['type', 'password'],
   ['placeholder', '비밀번호'],
   ['onfocus', () => { inputIsFocus('passwordAria'); }],
@@ -120,8 +121,7 @@ makeElement([
 
 makeElement([
   ['id', 'passwordInputError'],
-  ['className', 'inputs'],
-  ['innerHTML', '비밀번호를 입력해주세요'],
+  ['className', 'passwordError errors'],
   ['style', 'fontSize', '10px'],
   ['style', 'color', 'red'],
   ['style', 'display', 'none'],
