@@ -41,7 +41,7 @@ function signUp() {
       '이메일이 존재합니다.'
     )) return;
   
-    if (!checkPassword('signUp', password, passwordCheck)) return;
+    if (!checkPassword('signUp', password, passwordCheck) || !logicPassword('signUp', password)) return;
   
     if (phone.length === 11) {
       phone = `${phone.substr(0, 3)}-${phone.substr(3, 4)}-${phone.substr(7, 4)}`;
