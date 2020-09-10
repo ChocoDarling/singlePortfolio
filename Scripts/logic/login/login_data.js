@@ -15,9 +15,9 @@ function UserInfomation (userId, userName, userPassword, userEMail, userPhone) {
 
 const users = [];
 users.push(new UserInfomation(
-    'asdf', 
-    '경훈', 
-    '1234', 
-    'sdrbsdru@dsafsdaf.sdfaasdf', 
-    '123-8543-9543'
+    'admin', 
+    '마스터', 
+    'admin', 
+    '', 
+    ''
 ));
