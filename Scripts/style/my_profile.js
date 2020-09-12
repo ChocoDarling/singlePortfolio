@@ -164,6 +164,10 @@ document.getElementsByClassName('portfolio')[0].href = './html/login.html';
 document.getElementsByClassName('portfolio')[0].style.backgroundImage = 'url(./images/portfolio_login.jpg)';
 document.getElementsByClassName('portfolio')[0].style.backgroundSize = 'cover';
 
+document.getElementsByClassName('portfolio')[1].href = './html/youtube.html';
+document.getElementsByClassName('portfolio')[1].style.backgroundImage = 'url(./images/portfolio_login.jpg)';
+document.getElementsByClassName('portfolio')[1].style.backgroundSize = 'cover';
+
 for (let i = 0; i < 2; ++i) {
   let isMargin;
 
