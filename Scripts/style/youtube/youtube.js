@@ -287,6 +287,7 @@ arrMenuYoutubePlus.forEach(i => {
 
 makeElement([
   ['id', 'menuEnd'],
+  ['innerHTML', '<hr>'],
   ['style', 'float', 'left'],
   ['style', 'width', '15em'],
 ], 'menu');

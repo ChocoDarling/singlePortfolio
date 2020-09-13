@@ -139,16 +139,22 @@ function makeMenuElements(elementId, imageName, text) {
 }
 
 function menuEnter() {
+  const maxMenuTop = document.getElementById('header').offsetHeight;
   const scrollbar = document.getElementById('menuScrollBar');
-  const menuEnd = document.getElementById('menuEnd');
+  const menuEnd = (
+    document.getElementById('menuEnd').offsetTop + 
+    document.getElementById('menuEnd').offsetHeight
+  );
 
-  if (innerHeight > menuEnd.offsetTop) return;
+  console.log(menuEnd);
+
+  if (innerHeight - maxMenuTop > menuEnd) return;
 
   scrollbar.style.display = 'block';
   scrollbar.style.height = `${ 
     (innerHeight - document.getElementById('header').offsetHeight) * 
     (innerHeight - document.getElementById('header').offsetHeight) / 
-    menuEnd.offsetTop}px`;
+    menuEnd}px`;
 
   disableScroll();
 }
@@ -160,12 +166,15 @@ function menuLeave() {
 
 function menuScroll(e) {
   const scrollbar = document.getElementById('menuScrollBar');
-  const menuEnd = document.getElementById('menuEnd');
+  const menuEnd = (
+    document.getElementById('menuEnd').offsetTop + 
+    document.getElementById('menuEnd').offsetHeight
+  );
   const menu = document.getElementById('menu');
   const maxMenuTop = document.getElementById('header').offsetHeight;
-  const minMenuTop = innerHeight - menuEnd.offsetTop;
+  const minMenuTop = innerHeight - menuEnd;
   
-  if (innerHeight > menuEnd.offsetTop) return;
+  if (innerHeight - maxMenuTop > menuEnd) return;
 
   menu.style.top = `${menu.offsetTop + e.wheelDelta}px`;
 
