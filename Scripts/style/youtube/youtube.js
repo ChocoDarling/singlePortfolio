@@ -13,6 +13,7 @@ makeElement([
   ['style', 'left', '0'],
   ['style', 'height', '3em'],
   ['style', 'width', '100%'],
+  ['style', 'backgroundColor', 'white'],
 ], 'fullScreen');
 
 makeElement([
@@ -61,6 +62,7 @@ makeElement([
 
 makeElement([
   ['id', 'userButton'],
+  ['className', 'TopPlus'],
   ['href', '#'],
   ['style', 'float', 'right'],
   ['style', 'margin', '0.5em'],
@@ -72,8 +74,9 @@ makeElement([
 
 makeElement([
   ['id', 'plusButton'],
+  ['className', 'TopPlus'],
   ['href', '#'],
-  ['onclick', () => { nowIcon('plusButton'); }],
+  ['onclick', () => { plusButten('plusButton'); plusMenu('plusDiv'); }],
   ['style', 'float', 'right'],
   ['style', 'margin', '0.5em'],
   ['style', 'height', '2em'],
@@ -83,6 +86,85 @@ makeElement([
   ['style', 'backgroundSize', 'cover'],
   ['style', 'backgroundColor', 'rgba(200, 200, 200, 0.0)'],
 ], 'headerRight', 'a');
+
+makeElement([
+  ['id', 'plusDiv'],
+  ['value', false],
+  ['style', 'display', 'none'],
+  ['style', 'position', 'fixed'],
+  ['style', 'top', '2.5em'],
+  ['style', 'right', '3em'],
+  ['style', 'width', '13em'],
+  ['style', 'backgroundColor', 'white'],
+  ['style', 'border', '1px solid lightgray'],
+  ['style', 'borderTop', null],
+], 'headerRight');
+
+makeElement([
+  ['id', 'plusTV'],
+  ['href', '#'],
+  ['onmouseenter', () => { backgroundOpacity('plusTV'); }],
+  ['onmouseleave', () => { backgroundOpacity('plusTV', false); }],
+  ['style', 'float', 'left'],
+  ['style', 'margin', '1em 0em'],
+  ['style', 'height', '2em'],
+  ['style', 'width', '13em'],
+  ['style', 'backgroundColor', 'rgba(200, 200, 200, 0.0)'],
+], 'plusDiv', 'a');
+
+makeElement([
+  ['id', 'plusTVImage'],
+  ['src', '../images/1.jpg'],
+  ['alt', 'tempImage'],
+  ['style', 'margin', '0em 1em'],
+  ['style', 'float', 'left'],
+  ['style', 'height', '2em'],
+  ['style', 'backgroundSize', 'cover'],
+], 'plusTV', 'img');
+
+makeElement([
+  ['id', 'plusTVText'],
+  ['innerHTML', 'Youtube TV'],
+  ['style', 'padding', '0.3em 0em'],
+  ['style', 'float', 'left'],
+  ['style', 'margin', 'auto'],
+  ['style', 'fontSize', '1em'],
+  ['style', 'color', 'black'],
+], 'plusTV', 'p');
+
+makeElement([], 'plusDiv', 'hr');
+
+makeElement([
+  ['id', 'plusMusic'],
+  ['href', '#'],
+  ['onmouseenter', () => { backgroundOpacity('plusMusic'); }],
+  ['onmouseleave', () => { backgroundOpacity('plusMusic', false); }],
+  ['style', 'float', 'left'],
+  ['style', 'margin', '1em 0em'],
+  ['style', 'height', '2em'],
+  ['style', 'width', '13em'],
+  ['style', 'backgroundColor', 'rgba(200, 200, 200, 0.0)'],
+], 'plusDiv', 'a');
+
+makeElement([
+  ['id', 'plusMusicImage'],
+  ['src', '../images/1.jpg'],
+  ['alt', 'tempImage'],
+  ['style', 'margin', '0em 1em'],
+  ['style', 'float', 'left'],
+  ['style', 'height', '2em'],
+  ['style', 'backgroundSize', 'cover'],
+], 'plusMusic', 'img');
+
+makeElement([
+  ['id', 'plusMusicText'],
+  ['innerHTML', 'Youtube Music'],
+  ['style', 'padding', '0.3em 0em'],
+  ['style', 'float', 'left'],
+  ['style', 'margin', 'auto'],
+  ['style', 'fontSize', '1em'],
+  ['style', 'color', 'black'],
+], 'plusMusic', 'p');
 
 
 makeElement([
@@ -233,6 +315,7 @@ makeElement([
 
 makeElement([
   ['id', 'container'],
+  ['value', 0],
   ['style', 'display', 'inline-block'],
   ['style', 'position', 'absolute'],
   ['style', 'top', '3em'],
@@ -241,58 +324,3 @@ makeElement([
   ['style', 'padding', '1em'],
   ['style', 'backgroundColor', 'rgba(200, 200, 200, 0.4)'],
 ], 'fullScreen');
-
-for (let i = 0; i < 20; ++i) {
-  makeElement([
-    ['id', `videoListDiv${i}`],
-    ['className', 'videoList'],
-    ['href', '#'],
-    ['style', 'position', 'relative'],
-    ['style', 'display', 'inline-block'],
-    ['style', 'float', 'left'],
-    ['style', 'width', `${100 / 3}%`],
-    ['style', 'height', '20em'],
-    ['style', 'textDecoration', 'none'],
-  ], 'container');
-
-  makeElement([
-    ['id', `videoList${i}`],
-    ['className', 'videoList'],
-    ['href', '#'],
-    ['onmouseenter', () => { backgroundOpacity(`videoList${i}`); }],
-    ['onmouseleave', () => { backgroundOpacity(`videoList${i}`, false); }],
-    ['style', 'position', 'absolute'],
-    ['style', 'display', 'inline-block'],
-    ['style', 'top', '1em'],
-    ['style', 'left', '1em'],
-    ['style', 'right', '1em'],
-    ['style', 'bottom', '1em'],
-    ['style', 'textDecoration', 'none'],
-    ['style', 'backgroundColor', 'rgba(200, 200, 200, 0.0)'],
-  ], `videoListDiv${i}`, 'a');
-
-  makeElement([
-    ['className', 'videoListImage'],
-    ['style', 'position', 'absolute'],
-    ['style', 'display', 'inline-block'],
-    ['style', 'top', '0em'],
-    ['style', 'left', '0em'],
-    ['style', 'right', '0em'],
-    ['style', 'bottom', '50%'],
-    ['style', 'backgroundImage', 'url(../images/video_image.png)'],
-    ['style', 'backgroundSize', 'contain'],
-    ['style', 'overflow', 'hidden'],
-  ], `videoList${i}`);
-
-  makeElement([
-    ['id', `videoListText${i}`],
-    ['innerHTML', `${i}번째 영상 텍스트`],
-    ['style', 'position', 'absolute'],
-    ['style', 'display', 'inline-block'],
-    ['style', 'top', '50%'],
-    ['style', 'left', '0em'],
-    ['style', 'right', '0em'],
-    ['style', 'bottom', '0em'],
-    ['style', 'textDecoration', 'none'],
-  ], `videoList${i}`, 'p');
-}

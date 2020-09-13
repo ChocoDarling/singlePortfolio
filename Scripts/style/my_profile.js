@@ -39,7 +39,6 @@ makeElement([
   ['innerHTML', `KyungHoon's Coding Life`],
 ], 'intro', 'h1');
 
-
 makeElement([
   ['id', 'profile'],
   ['style', 'margin', 'auto'],

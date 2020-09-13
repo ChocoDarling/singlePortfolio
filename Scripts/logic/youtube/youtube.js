@@ -198,3 +198,107 @@ function backgroundOpacity(elementId, isOn = true) {
 
   element.style.backgroundColor = `rgba(200, 200, 200, ${inOpacity})`;
 }
+
+function plusButten(elementId) {
+  const element = document.getElementById(elementId);
+  
+  if (Number.parseFloat(
+    element.style.backgroundColor.match(/\d\.\d/)
+    )) return;
+  
+  let changeOpacity = 0.2;
+  let nowOpacity = 0;
+  const changingOpacity = setInterval(() => {
+    if (nowOpacity > 1) changeOpacity = -0.2;
+    nowOpacity += changeOpacity;
+    element.style.backgroundColor = `rgba(200, 200, 200, ${nowOpacity})`;
+    if (nowOpacity < 0) clearInterval(changingOpacity);
+  }, 50);
+}
+
+function plusMenu(elementId) {
+  const element = document.getElementById(elementId);
+  if (element.value) {
+    element.value = false;
+    element.style.display = 'none';
+  } else {
+    element.value = true;
+    element.style.display = 'block';
+  }
+}
+
+setInterval(() => {
+  const element = document.getElementById('container');
+  const videoListLength = element.value;
+  const maxMenuTop = document.getElementById('header').offsetHeight;
+
+  if (scrollY + innerHeight > element.offsetHeight - maxMenuTop) {
+    for (let i = 1; i < 7; ++i) {
+      makeElement([
+        ['id', `videoListDiv${i + videoListLength}`],
+        ['className', 'videoList'],
+        ['href', '#'],
+        ['style', 'position', 'relative'],
+        ['style', 'display', 'inline-block'],
+        ['style', 'float', 'left'],
+        ['style', 'width', `${100 / 3}%`],
+        ['style', 'height', '20em'],
+        ['style', 'textDecoration', 'none'],
+      ], 'container');
+
+      makeElement([
+        ['id', `videoList${i + videoListLength}`],
+        ['className', 'videoList'],
+        ['href', '#'],
+        ['onmouseenter', () => { backgroundOpacity(`videoList${i + videoListLength}`); }],
+        ['onmouseleave', () => { backgroundOpacity(`videoList${i + videoListLength}`, false); }],
+        ['style', 'position', 'absolute'],
+        ['style', 'display', 'inline-block'],
+        ['style', 'top', '1em'],
+        ['style', 'left', '1em'],
+        ['style', 'right', '1em'],
+        ['style', 'bottom', '1em'],
+        ['style', 'textDecoration', 'none'],
+        ['style', 'backgroundColor', 'rgba(200, 200, 200, 0.0)'],
+      ], `videoListDiv${i + videoListLength}`, 'a');
+
+      makeElement([
+        ['className', 'videoListImage'],
+        ['style', 'position', 'absolute'],
+        ['style', 'display', 'inline-block'],
+        ['style', 'top', '0em'],
+        ['style', 'left', '0em'],
+        ['style', 'right', '0em'],
+        ['style', 'bottom', '50%'],
+        ['style', 'backgroundImage', 'url(../images/video_image.png)'],
+        ['style', 'backgroundSize', 'contain'],
+        ['style', 'overflow', 'hidden'],
+      ], `videoList${i + videoListLength}`);
+
+      makeElement([
+        ['id', `videoListText${i + videoListLength}`],
+        ['innerHTML', `${i + videoListLength}번째 영상 텍스트`],
+        ['style', 'position', 'absolute'],
+        ['style', 'display', 'inline-block'],
+        ['style', 'top', '50%'],
+        ['style', 'left', '0em'],
+        ['style', 'right', '0em'],
+        ['style', 'bottom', '0em'],
+        ['style', 'textDecoration', 'none'],
+      ], `videoList${i + videoListLength}`, 'p');
+    }
+  element.value += 6;
+  }
+  
+}, 100);
+
+function plusVideo(e, elementId) {
+  const element = document.getElementById(elementId);
+  const videoListLength = element.value;
+  const maxMenuTop = document.getElementById('header').offsetHeight;
+
+  console.log(scrollY);
+  console.log(element.offsetHeight - innerHeight - maxMenuTop);
+  
+
+}
