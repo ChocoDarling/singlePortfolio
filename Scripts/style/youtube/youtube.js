@@ -324,3 +324,10 @@ makeElement([
   ['style', 'padding', '1em'],
   ['style', 'backgroundColor', 'rgba(200, 200, 200, 0.4)'],
 ], 'fullScreen');
+
+makeElement([
+  ['id', 'videoCountY'],
+  ['value', 3],
+  ['style', 'display', 'none'],
+  ['style', 'width', '1em'],
+], 'container')

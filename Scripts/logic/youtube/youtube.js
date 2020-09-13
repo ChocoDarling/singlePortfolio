@@ -227,10 +227,24 @@ function plusMenu(elementId) {
   }
 }
 
+let nowWidth;
 setInterval(() => {
   const element = document.getElementById('container');
   const videoListLength = element.value;
   const maxMenuTop = document.getElementById('header').offsetHeight;
+  let videoCountY = document.getElementById('videoCountY');
+
+  if (videoListLength) {
+    if (element.offsetWidth / videoCountY.value > maxMenuTop * 30 / 3) {
+      videoCountY.value += 1;
+      allVideoResize('videoList', videoCountY.value);
+    }
+    if (element.offsetWidth / videoCountY.value < maxMenuTop * 20 / 3) {
+      videoCountY.value -= 1;
+      allVideoResize('videoList', videoCountY.value);
+      if (videoCountY.value < 1) videoCountY.value = 1;
+    } 
+  }
 
   if (scrollY + innerHeight > element.offsetHeight - maxMenuTop) {
     for (let i = 1; i < 7; ++i) {
@@ -241,14 +255,13 @@ setInterval(() => {
         ['style', 'position', 'relative'],
         ['style', 'display', 'inline-block'],
         ['style', 'float', 'left'],
-        ['style', 'width', `${100 / 3}%`],
+        ['style', 'width', `${100 / videoCountY.value}%`],
         ['style', 'height', '20em'],
         ['style', 'textDecoration', 'none'],
       ], 'container');
 
       makeElement([
         ['id', `videoList${i + videoListLength}`],
-        ['className', 'videoList'],
         ['href', '#'],
         ['onmouseenter', () => { backgroundOpacity(`videoList${i + videoListLength}`); }],
         ['onmouseleave', () => { backgroundOpacity(`videoList${i + videoListLength}`, false); }],
@@ -263,7 +276,7 @@ setInterval(() => {
       ], `videoListDiv${i + videoListLength}`, 'a');
 
       makeElement([
-        ['className', 'videoListImage'],
+        ['id', `videoListImage${i + videoListLength}`],
         ['style', 'position', 'absolute'],
         ['style', 'display', 'inline-block'],
         ['style', 'top', '0em'],
@@ -292,13 +305,9 @@ setInterval(() => {
   
 }, 100);
 
-function plusVideo(e, elementId) {
-  const element = document.getElementById(elementId);
-  const videoListLength = element.value;
-  const maxMenuTop = document.getElementById('header').offsetHeight;
-
-  console.log(scrollY);
-  console.log(element.offsetHeight - innerHeight - maxMenuTop);
-  
-
+function allVideoResize(arrClassName, count) {
+  const arrVideo = document.getElementsByClassName(arrClassName);
+  for (let i = 0; i< arrVideo.length; ++i){
+    arrVideo[i].style.width = `${100 / count}%`;
+  }
 }

@@ -137,7 +137,6 @@ function getPortfolioHeight() {
 makeElement([
   ['id', 'portfolioScreen'],
   ['style', 'height', getPortfolioHeight()],
-  ['style', 'border', '1px solid white'],
 ], 'fullScreen');
 
 const portfolioWidth = Number.parseInt(document.getElementById('fullScreen').style.width) / 5 * 2;
@@ -163,9 +162,13 @@ document.getElementsByClassName('portfolio')[0].href = './html/login.html';
 document.getElementsByClassName('portfolio')[0].style.backgroundImage = 'url(./images/portfolio_login.jpg)';
 document.getElementsByClassName('portfolio')[0].style.backgroundSize = 'cover';
 
-document.getElementsByClassName('portfolio')[1].href = './html/youtube.html';
-document.getElementsByClassName('portfolio')[1].style.backgroundImage = 'url(./images/portfolio_login.jpg)';
+document.getElementsByClassName('portfolio')[1].href = './html/naver.html';
+document.getElementsByClassName('portfolio')[1].style.backgroundImage = 'url(./images/naver_imcomplete.jpg)';
 document.getElementsByClassName('portfolio')[1].style.backgroundSize = 'cover';
+
+document.getElementsByClassName('portfolio')[2].href = './html/youtube.html';
+document.getElementsByClassName('portfolio')[2].style.backgroundImage = 'url(./images/youtube.jpg)';
+document.getElementsByClassName('portfolio')[2].style.backgroundSize = 'cover';
 
 for (let i = 0; i < 2; ++i) {
   let isMargin;
@@ -175,6 +178,7 @@ for (let i = 0; i < 2; ++i) {
 
   makeElement([
     ['class', 'portfolio'],
+    ['style', 'display', 'none'],
     ['style', 'margin', '10px'],
     ['style', isMargin, `${portfolioWidth / 2 - 92}px`],
     ['style', 'float', 'left'],
